@@ -27,14 +27,25 @@ public class SysInfoController : ControllerBase{
         return sysInfo;
     }
 
-    // Endpoint to POST new System Information.
+    // Endpoint to POST new System Information. Using the DTO
     [HttpPost]
-    public async Task<ActionResult<SystemInfo>> PostSysInfo(SystemInfo sysInfo){
-        _context.SystemInfos.Add(sysInfo);
-        await _context.SaveChangesAsync();
+    public IActionResult PostSystemInformation([FromBody] SystemInfoDto dto){
+        var sysInfo = new SystemInfo{
+            CpuUsage = dto.CpuUsage,
+            MemoryUsage = dto.MemoryUsage,
+            Temperature = dto.Temperature,
+            TimeStamp = DateTime.UtcNow
+        };
 
-        return CreatedAtAction("GetSystemInfo", new { id = sysInfo.Id }, sysInfo);
+        _context.SystemInfos.Add(sysInfo);
+        _context.SaveChanges();
+
+        return Ok(sysInfo);
     }
+
+
+
+
 
     // Endpoint to delete a record of System Information.
     [HttpDelete("{id}")]
