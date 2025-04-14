@@ -4420,19 +4420,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Danny\\.nuget\\packages\\": {}
+    "/home/danny/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj",
+      "projectUniqueName": "/home/danny/RPi5DashboardInsights/server/server.csproj",
       "projectName": "server",
-      "projectPath": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj",
-      "packagesPath": "C:\\Users\\Danny\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\obj\\",
+      "projectPath": "/home/danny/RPi5DashboardInsights/server/server.csproj",
+      "packagesPath": "/home/danny/.nuget/packages/",
+      "outputPath": "/home/danny/RPi5DashboardInsights/server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Danny\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/danny/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4517,7 +4517,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

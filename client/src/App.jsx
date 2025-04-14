@@ -19,7 +19,7 @@ function App() {
     };
   
     try {
-      const response = await fetch('http://localhost:6710/api/sysinfo', {
+      const response = await fetch('https://dashboard.northdev.xyz/api/sysinfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function App() {
 
   const fetchApi = async () => {
     try{
-      const response = await fetch('http://localhost:6710/api/sysinfo');
+      const response = await fetch('https://dashboard.northdev.xyz/api/sysinfo');
       const data  = await response.text();
       setFetchedData(data);
     }
