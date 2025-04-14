@@ -3,14 +3,14 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  
+
   server: {
     // assigning project port
     port: 6711,
     allowedHosts: ['dashboard.northdev.xyz', 'localhost', '192.168.2.41'],
     proxy: {
       '/api': {
-        target: 'http://localhost:6710', 
+        target: 'http://localhost:6710',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },
