@@ -5,6 +5,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Service for Identity
+// builder.Services.AddIdentityApiEndpoints<User>()
+//     .AddEntityFrameworkStores<MyContext>();
+
 // Setup CORS 
 builder.Services.AddCors(options =>{
 
@@ -28,7 +32,10 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowReactApp");
 
-app.UseAuthorization();
+// Middleware for Identity framework
+// app.UseAuthentication();
+// app.UseAuthorization();
+// app.MapIdentityApi<User>();
 
 app.MapControllers();
 
