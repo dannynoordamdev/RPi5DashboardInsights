@@ -139,3 +139,8 @@
 /home/danny/RPi5DashboardInsights/server/obj/Release/net8.0/server.pdb
 /home/danny/RPi5DashboardInsights/server/obj/Release/net8.0/server.genruntimeconfig.cache
 /home/danny/RPi5DashboardInsights/server/obj/Release/net8.0/ref/server.dll
+/home/danny/RPi5DashboardInsights/server/bin/Release/net8.0/publish/web.config
+/home/danny/RPi5DashboardInsights/server/bin/Release/net8.0/publish/appsettings.Development.json
+/home/danny/RPi5DashboardInsights/server/bin/Release/net8.0/publish/appsettings.json
+/home/danny/RPi5DashboardInsights/server/bin/Release/net8.0/publish/server.deps.json
+/home/danny/RPi5DashboardInsights/server/bin/Release/net8.0/publish/server.runtimeconfig.json

@@ -1,6 +1,11 @@
 /home/danny/RPi5DashboardInsights/server/publish/server
+/home/danny/RPi5DashboardInsights/server/publish/publish/web.config
 /home/danny/RPi5DashboardInsights/server/publish/appsettings.Development.json
 /home/danny/RPi5DashboardInsights/server/publish/appsettings.json
+/home/danny/RPi5DashboardInsights/server/publish/publish/appsettings.Development.json
+/home/danny/RPi5DashboardInsights/server/publish/publish/appsettings.json
+/home/danny/RPi5DashboardInsights/server/publish/publish/server.deps.json
+/home/danny/RPi5DashboardInsights/server/publish/publish/server.runtimeconfig.json
 /home/danny/RPi5DashboardInsights/server/publish/server.dll
 /home/danny/RPi5DashboardInsights/server/publish/server.runtimeconfig.json
 /home/danny/RPi5DashboardInsights/server/publish/server.pdb
