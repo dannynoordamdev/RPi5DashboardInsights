@@ -14,6 +14,15 @@ public class SysInfoController : ControllerBase{
         return await _context.SystemInfos.ToListAsync();
     }
 
+    [HttpGet("latest")]
+    public async Task<ActionResult<SystemInfo>> GetLatestSystemInfo()
+    {
+        var latestSysInfo = await _context.SystemInfos
+                                        .OrderByDescending(si => si.TimeStamp)
+                                        .FirstOrDefaultAsync();
+        return Ok(latestSysInfo);
+    }
+
 
     // Endpoint to retrieve stored System Info based upon ID.
     [HttpGet("{id}")]

@@ -1,12 +1,39 @@
-import React from "react"
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import '../../Styling/Dashboardstyling.css';
+import FetchSystemData from "../FetchSystemData";
 
+function Dashboard() {
+    const [currentTime, setCurrentTime] = useState("");
+    const [userName, setUserName] = useState("Danny");
 
-function Dashboard(){
-    return(
-        <>
-        </>
-    )
+    const formatTime = (date) => {
+        const hours = String(date.getHours()).padStart(2, '0'); 
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${hours}:${minutes}`;
+    };
+
+    useEffect(() => {
+        setCurrentTime(formatTime(new Date()));
+
+        const interval = setInterval(() => {
+            setCurrentTime(formatTime(new Date()));
+        }, 60000); 
+
+        return () => clearInterval(interval); 
+    }, []);
+
+    return (
+        <div className="dashboard-wrapper">
+            <div className="dashboard-card">
+                <div className="information-part">
+                    <p>Welcome, {userName}</p>
+                    <p>Current time: {currentTime}</p>
+                </div>
+                <hr className="content-divider" />
+                <FetchSystemData/>
+            </div>
+        </div>
+    );
 }
 
-export default Dashboard
+export default Dashboard;

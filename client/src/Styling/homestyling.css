@@ -68,7 +68,7 @@
 @media (max-width: 500px) {
 
     .home-main-content{
-        height: 100vh;
+        height: calc(100vh - 100px);
 
     }
 
