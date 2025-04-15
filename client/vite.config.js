@@ -6,6 +6,7 @@ export default defineConfig({
 
   server: {
     // assigning project port
+    host: '0.0.0.0',
     port: 6711,
     allowedHosts: ['dashboard.northdev.xyz', 'localhost', '192.168.2.41'],
     proxy: {

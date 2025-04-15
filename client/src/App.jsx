@@ -1,29 +1,24 @@
-import { useState } from 'react';
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from '../src/components/pages/Home'
+import Login from '../src/components/pages/Login'
+import Dashboard from '../src/components/pages/Dashboard'
+import NotFound from '../src/components/pages/NotFound'
 
 
-function App() {
-  const [fetchedData, setFetchedData] = useState();
+function App(){
 
-  
+  return(
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/*" element={<NotFound />} />
 
-  const fetchApi = async () => {
-    try{
-      const response = await fetch('https://dashboard.northdev.xyz/api/sysinfo');
-      const data  = await response.text();
-      setFetchedData(data);
-    }
-    catch (error){
-      console.error("failed to fetch", error)
-    }
-  }
-  
-  return (
-    <>
-      <h1>RPi5 Dashboard</h1>
-      <button type="button" onClick={fetchApi}></button>
-      <p>{fetchedData}</p>
-    </>
+
+      </Routes>
+    </Router>
   )
 }
 
