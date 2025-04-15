@@ -37,8 +37,9 @@ def main():
 
         # Post data
         send_to_backend(size_mb, row_count)
+        print(size_mb)
 
-        # repeat every day
+        # repeat every 10m
         time.sleep(10 * 60)
 
 
