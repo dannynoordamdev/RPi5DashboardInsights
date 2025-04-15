@@ -23,7 +23,7 @@ const handleNavigation = () =>{
             Programmed by Dannynoordamdev       
         </p>
 
-        <button className="home-button-to-dashboard" onClick={handleNavigation}>Dashboard</button>
+        <button className="home-button-to-dashboard" onClick={handleNavigation}>Enter Dashboard</button>
     </div>
     </>)
 }
