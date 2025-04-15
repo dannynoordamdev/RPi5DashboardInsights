@@ -14,6 +14,7 @@ public class MyContext : IdentityDbContext{
 
     // This sets up our tables inside the DB.
     public DbSet<SystemInfo> SystemInfos { get; set;}
+    public DbSet<DbHealth> dbHealths { get; set;}
 
 
 

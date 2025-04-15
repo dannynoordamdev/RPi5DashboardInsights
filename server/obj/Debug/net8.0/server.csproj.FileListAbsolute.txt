@@ -451,3 +451,8 @@ C:/Users/Danny/Desktop/Projects/RPi5DashboardInsights/server/obj/Debug/net8.0/re
 /home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/appsettings.json
 /home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/server.deps.json
 /home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/server.runtimeconfig.json
+/home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/publish/web.config
+/home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/publish/appsettings.Development.json
+/home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/publish/appsettings.json
+/home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/publish/server.deps.json
+/home/danny/RPi5DashboardInsights/server/bin/Debug/net8.0/publish/publish/server.runtimeconfig.json
