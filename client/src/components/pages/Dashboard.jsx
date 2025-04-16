@@ -30,7 +30,23 @@ function Dashboard() {
                     <p>Current time: {currentTime}</p>
                 </div>
                 <hr className="content-divider" />
-                <FetchSystemData/>
+                <div className="grid grid-3">
+                    <div className="card">
+                        <h1 className="card-data">CPU:</h1>
+                    </div>
+                    <div className="card">
+                    <h1 className="card-data">CPU:</h1>
+                    </div>
+                    <div className="card">
+                    <h1 className="card-data">CPU:</h1>
+                    </div>
+
+                </div>
+                <hr />
+                <div className="grid grid-2">
+                <div className="card"></div>
+                <div className="card"></div>
+                </div>
             </div>
         </div>
     );

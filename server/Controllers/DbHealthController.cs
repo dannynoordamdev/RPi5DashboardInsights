@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class DbHealthController : ControllerBase{
 
-    private MyContext _myContext = new MyContext();
+    private MyContext _context = new MyContext();
 
 
     // Endpoint to add new DbHealth data into the database itself
@@ -20,10 +20,19 @@ public class DbHealthController : ControllerBase{
 
         };
 
-        _myContext.dbHealths.Add(dbHealth);
-        _myContext.SaveChanges();
+        _context.dbHealths.Add(dbHealth);
+        _context.SaveChanges();
 
         return Ok(dbHealth);
+    }
+
+    [HttpGet("latest")]
+    public async Task<ActionResult<SystemInfo>> GetLatestDatabaseInfo()
+    {
+        var latestDbInfo = await _context.dbHealths
+                                        .OrderByDescending(si => si.TimeStamp)
+                                        .FirstOrDefaultAsync();
+        return Ok(latestDbInfo);
     }
 
 }
