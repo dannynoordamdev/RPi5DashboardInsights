@@ -36,6 +36,26 @@ public class SysInfoController : ControllerBase{
         return sysInfo;
     }
 
+    [HttpGet("hourly/latest")]
+    public async Task<ActionResult<IEnumerable<SystemInfo>>> GetHourlyLatest()
+    {
+        var cutoff = DateTime.UtcNow.AddHours(-12);
+
+        var recentData = await _context.SystemInfos
+            .Where(x => x.TimeStamp >= cutoff)
+            .OrderByDescending(x => x.TimeStamp)
+            .ToListAsync();
+
+        var onePerHour = recentData
+            .GroupBy(x => new DateTime(x.TimeStamp.Year, x.TimeStamp.Month, x.TimeStamp.Day, x.TimeStamp.Hour, 0, 0))
+            .Select(g => g.OrderByDescending(x => x.TimeStamp).First())
+            .OrderBy(x => x.TimeStamp)
+            .ToList();
+
+        return Ok(onePerHour);
+    }
+
+
     // Endpoint to POST new System Information. Using the DTO
     [HttpPost]
     public IActionResult PostSystemInformation([FromBody] SystemInfoDto dto){
@@ -43,7 +63,7 @@ public class SysInfoController : ControllerBase{
             CpuUsage = dto.CpuUsage,
             MemoryUsage = dto.MemoryUsage,
             Temperature = dto.Temperature,
-            TimeStamp = DateTime.UtcNow
+            TimeStamp = DateTime.Now
         };
 
         _context.SystemInfos.Add(sysInfo);
@@ -70,5 +90,7 @@ public class SysInfoController : ControllerBase{
 
         return NoContent();
     }
+
+    
 
 }

@@ -66,7 +66,7 @@ def post_data(data):
 
 
 
-# Repeat every 10 seconds
+# Repeat every second
 def main():
     while True:
         
@@ -79,8 +79,8 @@ def main():
         # Post data:
         post_data(data)
 
-        # Repeat every 10 seconds:
-        time.sleep(10)
+        # Repeat every second:
+        time.sleep(1)
 
 
 if __name__ == "__main__":

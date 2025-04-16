@@ -16,7 +16,7 @@ public class DbHealthController : ControllerBase{
         var dbHealth = new DbHealth{
             SizeMB = dto.SizeMB,
             TotalRows = dto.TotalRows,
-            TimeStamp = DateTime.UtcNow
+            TimeStamp = DateTime.Now
 
         };
 

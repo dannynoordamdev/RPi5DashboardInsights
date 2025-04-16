@@ -39,8 +39,8 @@ def main():
         send_to_backend(size_mb, row_count)
         print(size_mb)
 
-        # repeat every 10m
-        time.sleep(10 * 60)
+        # repeat every 10 seconds
+        time.sleep(10)
 
 
 
