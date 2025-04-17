@@ -25,10 +25,13 @@ public class AppStatusController : ControllerBase{
 
     [HttpGet("latest")]
     public async Task<ActionResult<AppStatus>> GetLatestAppStatus()
-    {
-        var latestAppStatus = await _context.appStatuses
-                                        .OrderByDescending(si => si.TimeStamp)
-                                        .FirstOrDefaultAsync();
-        return Ok(latestAppStatus);
+    {   
+        var latestStatuses = await _context.appStatuses
+            .GroupBy(a => a.Name)
+            .Select(g => g.OrderByDescending(a => a.TimeStamp).FirstOrDefault())
+            .ToListAsync();
+
+        return Ok(latestStatuses);
+        
     }
 }

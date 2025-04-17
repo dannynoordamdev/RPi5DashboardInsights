@@ -38,34 +38,35 @@ function Dashboard() {
         <div className="dashboard-wrapper">
             <div className="dashboard-card">
                 <div className="information-part">
-                    <p>Welcome, {userName}</p>
-                    <p>Current time: {currentTime}</p>
+                    <p className="label">Welcome, {userName}</p>
+                    <p className="label">Current time: {currentTime}</p>
                 </div>
                 <hr className="content-divider" />
                 
                 <div className="grid grid-3">
                     <div className="card">
-                        <h3 className="card-title">System Stats</h3>
-                        <h1 className="card-data">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}</h1>
-                        <h1 className="card-data">CPU Usage: {fetchedSystemData?.cpuUsage ?? 'Loading...'}%</h1>
-                        <h1 className="card-data">Memory Usage: {fetchedSystemData?.memoryUsage ?? 'Loading...'}%</h1>
+                        <h2 className="card-title">System Stats</h2>
+                        <p className="card-data ">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}</p>
+                        <p className="card-data">CPU Usage: {fetchedSystemData?.cpuUsage ?? 'Loading...'}%</p>
+                        <p className="card-data">Memory Usage: {fetchedSystemData?.memoryUsage ?? 'Loading...'}%</p>
                     </div>
                     <div className="card">
-                        <h3 className="card-title">Database Stats</h3>
-                        <h1 className="card-data">Database Size: {fetchedDbData?.sizeMB ?? 'Loading...'}MB</h1>
-                        <h1 className="card-data">Database Rows: {fetchedDbData?.totalRows ?? 'Loading...'} entries</h1>
+                        <h2 className="card-title">Database Stats</h2>
+                        <p className="card-data">Database Size: {fetchedDbData?.sizeMB ?? 'Loading...'}MB</p>
+                        <p className="card-data">Database Rows: {fetchedDbData?.totalRows ?? 'Loading...'} entries</p>
 
                     </div>
                     <div className="card">
-                        <h3 className="card-title">Raspberry Pi Storage</h3>
-                        <h1 className="card-data">Internal Storage: { 'Loading... '}</h1>
-                        <h1 className="card-data">External Storage: { 'Loading... '}</h1>
+                        <h2 className="card-title">Raspberry Pi Storage</h2>
+                        <p className="card-data">Internal Storage: { 'Loading... '}</p>
+                        <p className="card-data">External Storage: { 'Loading... '}</p>
 
                     </div>
                     
                     
                 </div>
-                <hr />
+                <hr className="content-divider" />
+
                 <div className="grid grid-1">
                 <div className="card">
                     <h3 className="card-title">12H Stats</h3>
@@ -79,16 +80,32 @@ function Dashboard() {
 
                 <hr className="content-divider" />
                 
-                <div className="grid grid-1">
-                    <div className="card">
-                        <h3 className="card-title">Running Applications:</h3>
-                        <h1 className="card-data-service"><strong>Service:</strong> {fetchedAppStatus?.name ?? 'Loading...'} | <strong>Status:</strong> {fetchedAppStatus?.status ?? 'Loading...'} | <strong>Uptime:</strong> {fetchedAppStatus?.uptime ?? 'Loading...'}</h1>
+                <div className="app-status-card">
+                    <h3 className="card-title">Current running services:</h3>
+                    <div className="grid grid-4">
+                        {fetchedAppStatus?.map((app) => (
+                        <div key={app.id} className="card service-card">
+                            <div className="service-row">
+                            <span className="label">Service:</span>
+                            <span className="value">{app.name}</span>
+                            </div>
+                            <div className="service-row">
+                            <span className="label">Uptime:</span>
+                            <span className="value">{app.uptime}</span>
+                            </div>
+                            <div className="service-row">
+                            <span className="label">Status:</span>
+                            <span className={`value status-text ${app.status === 'online' ? 'online' : 'offline'}`}>
+                                {app.status.toUpperCase()}
+                            </span>
+                            </div>
+                        </div>
+                        )) ?? <p>Loading...</p>}
                     </div>
-                    
-                    
-                    
-                    
-                </div>
+                    </div>
+
+                <hr className="content-divider" />
+
 
             </div>
         </div>
