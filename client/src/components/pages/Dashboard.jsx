@@ -11,7 +11,7 @@ function Dashboard() {
     const navigate = useNavigate();
 
     const handleSignout = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // 
 
         try{
             const response = await fetch("/api/auth/logout", {
@@ -19,7 +19,7 @@ function Dashboard() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                credentials: 'include',
+                credentials: 'include', // include because we send the cookie to asp
             });
 
             if (!response.ok) {
@@ -45,23 +45,9 @@ function Dashboard() {
         fetchedSystemData,
         fetchedDbData,
         fetchedAppStatus
-      } = useSystemData();
+      } = useSystemData(); // custom hook useSysData || Seperation of concerns
       
-    const formatTime = (date) => {
-        const hours = String(date.getHours()).padStart(2, '0'); 
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        return `${hours}:${minutes}`;
-    };
-
-    useEffect(() => {
-        setCurrentTime(formatTime(new Date()));
-
-        const interval = setInterval(() => {
-            setCurrentTime(formatTime(new Date()));
-        }, 60000); 
-
-        return () => clearInterval(interval); 
-    }, []);
+    
 
     return (
         
@@ -77,7 +63,7 @@ function Dashboard() {
                 <div className="grid grid-3">
                     <div className="card">
                         <h2 className="card-title">Current RPi Health </h2>
-                        <p className="card-data ">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}°</p>
+                        <p className="card-data ">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}°</p> 
                         <p className="card-data">CPU Usage: {fetchedSystemData?.cpuUsage ?? 'Loading...'}%</p>
                         <p className="card-data">Memory Usage: {fetchedSystemData?.memoryUsage  ?? 'Loading...'}% | { (8 - (fetchedSystemData?.memoryUsage / 100) * 8).toFixed(2)} GB RAM left</p>
                     </div>
