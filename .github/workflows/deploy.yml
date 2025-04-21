@@ -33,6 +33,6 @@ jobs:
             dotnet publish -c Release -o /home/danny/RPi5DashboardInsights/server/publish
 
             echo "🚀 Restarting ASP.NET Core backend..."
-            sudo systemctl restart aspnetcoreapp.service
+            sudo systemctl restart aspnetcoreapp
 
             echo "✅ Deployment complete!"
