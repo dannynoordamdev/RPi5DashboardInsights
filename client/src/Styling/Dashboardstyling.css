@@ -65,7 +65,7 @@ transition: transform 0.5s, box-shadow 0.5s;
 }
 
 .service-card:hover{
-transform: scale(1.1); 
+transform: scale(1); 
 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
 }
 
