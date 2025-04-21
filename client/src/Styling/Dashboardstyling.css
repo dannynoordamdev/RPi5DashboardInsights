@@ -61,7 +61,12 @@
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.service-card:hover{
+  transform: scale(1.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
 }
 
 
@@ -107,6 +112,21 @@
   margin-top: 24px;
 }
 
+.logout {
+  color: #64ffda;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 100%;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: rgba(100, 255, 218, 0.1);
+  border-color: rgba(100, 255, 218, 0.4);
+}
+
   
 
   @media (max-width: 1149px) {
@@ -116,6 +136,10 @@
   }
   .dashboard-wrapper p{
     font-size: 1rem;
+  }
+
+  .logout {
+    font-size: 1rem; 
   }
   
   .information-part{
@@ -156,6 +180,10 @@
     font-size: 1rem;
   }
 
+  .logout {
+    font-size: 1rem; 
+  }
+
   .dashboard-wrapper h3{
     font-size: 1.1rem;
   }
@@ -169,6 +197,10 @@
   }
   .dashboard-wrapper p{
     font-size: 0.9rem;
+  }
+
+  .logout {
+    font-size: 0.9rem; 
   }
 
   .dashboard-wrapper h3{
@@ -194,6 +226,9 @@
   }
   .dashboard-wrapper p{
     font-size: 0.85rem;
+  }
+  .logout {
+    font-size: 0.85rem; 
   }
 
   .dashboard-wrapper h3{
@@ -221,6 +256,10 @@
     font-size: 0.85rem;
   }
 
+  .logout {
+    font-size: 0.85rem; 
+  }
+
   .dashboard-wrapper h3{
     font-size: 0.9rem;
   }
@@ -240,5 +279,66 @@
   .grid-3 {
     grid-template-columns: repeat(1, 1fr);
   }
+  
+}
+
+@media (max-width: 500px){
+  .dashboard-wrapper h2{
+    font-size: 1rem;
+  }
+  .dashboard-wrapper p{
+    font-size: 0.85rem;
+  }
+
+  .logout {
+    font-size: 0.85rem; 
+  }
+
+  .dashboard-wrapper h3{
+    font-size: 0.9rem;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .label{
+    font-size: 0.9rem;
+  }
+  .value{
+    font-size: 0.9rem;
+
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .dashboard-wrapper {
+    width: calc(100vw - 5px);   
+    max-width: 1600px;             
+    margin: 25px auto;             
+    padding: 25px;                
+    min-height: calc(100vh - 50px);
+    border-radius: 50px;
+    background-color: #272b3350;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+.information-part{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+
+.grid {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
   
 }
