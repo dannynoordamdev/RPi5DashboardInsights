@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import '../../Styling/Dashboardstyling.css';
 import useSystemData from '../FetchSystemData';
-import SystemStatsChart from '../Charts/SystemStatsChart';
+// import SystemStatsChart from '../Charts/SystemStatsChart';
 
 function Dashboard() {
     const [currentTime, setCurrentTime] = useState("");
