@@ -61,7 +61,12 @@
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.service-card:hover{
+  transform: scale(1.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
 }
 
 
