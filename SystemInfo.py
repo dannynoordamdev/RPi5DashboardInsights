@@ -7,7 +7,7 @@ API_URL = 'http://localhost:6710/api/sysinfo'
 # python script to fetch various system information
 def fetch_system_info():
 
-    # CPU Usage
+    # CPU Usage every second
     cpu_usage = psutil.cpu_percent(interval=1)
     # Memory Usage
     memory = psutil.virtual_memory()
@@ -17,9 +17,10 @@ def fetch_system_info():
     temperature = None
     if temperature is None:
         try:
+            # Opening file to read current temp of the raspberry -> storing it in f
             with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
                 temp_str = f.readline()
-                temperature = float(temp_str) / 1000.0
+                temperature = float(temp_str) / 1000.0 # convert to normal degrees..
         except:
             temperature = "No temperature data available."
 
@@ -36,7 +37,7 @@ def fetch_system_info():
 def post_data(data):
     try:
 
-        # converting floats to str
+        # converting floats to str after earlier error..
         data["CpuUsage"] = str(data["CpuUsage"])
         data["MemoryUsage"] = str(data["MemoryUsage"])
         if data["Temperature"] is not None:
@@ -44,9 +45,10 @@ def post_data(data):
         
         
 
-
+        # JSON Post request towards asp.net core backend 
         response = requests.post(API_URL, json=data, headers={'Content-Type': 'application/json'})
 
+        # POST request checks
         if response.status_code == 200:
             print('Data posted successfully!')
         else:

@@ -9,11 +9,11 @@ DB_PATH = "server/systeminfo.db"
 
 # Function to retrieve db information
 def fetch_dbHealthInformation():
-    size_mb = os.path.getsize(DB_PATH) / (1024 * 1024)
+    size_mb = os.path.getsize(DB_PATH) / (1024 * 1024) # bytes -> MB
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM SystemInfos")
-    row_count = cursor.fetchone()[0]
+    row_count = cursor.fetchone()[0] # this returns the output of the curser, and grabs the first value
     conn.close()
     return size_mb, row_count
 
