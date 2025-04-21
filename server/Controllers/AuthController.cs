@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
+
+        // Identity provided managers for sign-in / crud actions
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
@@ -21,12 +23,12 @@ using Microsoft.AspNetCore.Mvc;
         {
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null)
-                return Unauthorized(new { message = "Invalid username or password" });
+                return Unauthorized(new { message = "Invalid username" });
 
             var result = await _signInManager.PasswordSignInAsync(
                 user,
                 request.Password,
-                isPersistent: true,
+                isPersistent: true, // multiple session auth
                 lockoutOnFailure: false);
 
             if (!result.Succeeded)
