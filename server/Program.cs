@@ -4,6 +4,7 @@
 // sudo systemctl restart aspnetcoreapp
 
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +17,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 .AddCookie(options =>
 {
     options.Cookie.HttpOnly = true;
+    options.Cookie.Name = "AuthCookie";
     options.Cookie.SameSite = SameSiteMode.Lax; // Of Strict
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Voor HTTPS
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.ExpireTimeSpan = TimeSpan.FromDays(7);
     options.SlidingExpiration = true;
     options.Events.OnRedirectToLogin = context =>
     {
@@ -40,17 +42,25 @@ builder.Services.AddCors(options =>{
     });
 });
 
-var app = builder.Build();
+builder.Services.AddDbContext<MyContext>();
 
-if (app.Environment.IsDevelopment())
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+    options.Lockout.AllowedForNewUsers = true;
+})
+    .AddEntityFrameworkStores<MyContext>()
+    .AddDefaultTokenProviders();
+
+var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run("http://localhost:6710");

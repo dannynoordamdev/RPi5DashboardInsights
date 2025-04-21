@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import '../../Styling/Dashboardstyling.css';
 import useSystemData from '../FetchSystemData';
 import SystemStatsChart from '../Charts/SystemStatsChart';
@@ -6,6 +8,34 @@ import SystemStatsChart from '../Charts/SystemStatsChart';
 function Dashboard() {
     const [currentTime, setCurrentTime] = useState("");
     const [userName, setUserName] = useState("Danny");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleSignout = async (e) => {
+        e.preventDefault();
+
+        try{
+            const response = await fetch("/api/auth/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setError(data.message || "Unable to logout");
+            } else {
+                alert("Signed out successfully!")
+                navigate("/");
+            }
+        } catch (error) {
+            setError("Error during logout: " + error.message);
+        }
+    };
+        
+    
 
     const {
         fetchSysData,
@@ -35,24 +65,27 @@ function Dashboard() {
     }, []);
 
     return (
+        
         <div className="dashboard-wrapper">
             <div className="dashboard-card">
                 <div className="information-part">
                     <p className="label">Welcome, {userName}</p>
                     <p className="label">Current time: {currentTime}</p>
+                    <span className="logout" onClick={handleSignout}>Logout</span>
+
                 </div>
                 <hr className="content-divider" />
                 
                 <div className="grid grid-3">
                     <div className="card">
-                        <h2 className="card-title">System Stats</h2>
-                        <p className="card-data ">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}</p>
+                        <h2 className="card-title">Current RPi Health </h2>
+                        <p className="card-data ">CPU Temp: {fetchedSystemData?.temperature ?? 'Loading...'}°</p>
                         <p className="card-data">CPU Usage: {fetchedSystemData?.cpuUsage ?? 'Loading...'}%</p>
-                        <p className="card-data">Memory Usage: {fetchedSystemData?.memoryUsage ?? 'Loading...'}%</p>
+                        <p className="card-data">Memory Usage: {fetchedSystemData?.memoryUsage  ?? 'Loading...'}% | { (8 - (fetchedSystemData?.memoryUsage / 100) * 8).toFixed(2)} GB RAM left</p>
                     </div>
                     <div className="card">
-                        <h2 className="card-title">Database Stats</h2>
-                        <p className="card-data">Database Size: {fetchedDbData?.sizeMB ?? 'Loading...'}MB</p>
+                        <h2 className="card-title">Database Insights</h2>
+                        <p className="card-data">Database Size: {fetchedDbData?.sizeMB.toFixed(2) ?? 'Loading...'}MB</p>
                         <p className="card-data">Database Rows: {fetchedDbData?.totalRows ?? 'Loading...'} entries</p>
 
                     </div>
