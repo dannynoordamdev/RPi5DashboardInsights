@@ -1,0 +1,38 @@
+name: Deploy to Raspberry Pi
+
+on:
+  push:
+    branches: [master]  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}  
+          username: ${{ secrets.SSH_USER }} 
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  
+          script: |
+            echo "🔄 Pulling latest code..."
+            cd /home/danny/RPi5DashboardInsights
+            git pull origin main
+
+            echo "📦 Updating frontend..."
+            cd client
+            npm install
+            pm2 reload clientdashboardapp
+
+            echo "🛠️ Publishing backend..."
+            cd ../server
+            dotnet publish -c Release -o /home/danny/RPi5DashboardInsights/server/publish
+
+            echo "🚀 Restarting ASP.NET Core backend..."
+            sudo systemctl restart aspnetcoreapp.service
+
+            echo "✅ Deployment complete!"
