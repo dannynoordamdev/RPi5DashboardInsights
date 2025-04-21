@@ -70,7 +70,6 @@ function Dashboard() {
             <div className="dashboard-card">
                 <div className="information-part">
                     <p className="label">Welcome, {userName}</p>
-                    <p className="label">Current time: {currentTime}</p>
                     <span className="logout" onClick={handleSignout}>Logout</span>
 
                 </div>
@@ -98,18 +97,7 @@ function Dashboard() {
                     
                     
                 </div>
-                <hr className="content-divider" />
 
-                <div className="grid grid-1">
-                <div className="card">
-                    <h3 className="card-title">12H Stats</h3>
-                    {fetchedSystemDataHourly && fetchedSystemDataHourly.length > 0 ? (
-                    <SystemStatsChart data={fetchedSystemDataHourly} />
-                    ) : (
-                    <p>Loading chart...</p>
-                    )}
-                </div>
-                </div>
 
                 <hr className="content-divider" />
                 
@@ -146,3 +134,18 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+
+
+// Chart component in progress...
+// <hr className="content-divider" />
+// <div className="grid grid-1">
+// <div className="card">
+//     <h3 className="card-title">12H Stats</h3>
+//     {fetchedSystemDataHourly && fetchedSystemDataHourly.length > 0 ? (
+//     <SystemStatsChart data={fetchedSystemDataHourly} />
+//     ) : (
+//     <p>Loading chart...</p>
+//     )}
+// </div>
+// </div>
