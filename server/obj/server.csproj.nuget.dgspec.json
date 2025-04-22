@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/danny/RPi5DashboardInsights/server/server.csproj": {}
+    "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj": {}
   },
   "projects": {
-    "/home/danny/RPi5DashboardInsights/server/server.csproj": {
+    "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/danny/RPi5DashboardInsights/server/server.csproj",
+        "projectUniqueName": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj",
         "projectName": "server",
-        "projectPath": "/home/danny/RPi5DashboardInsights/server/server.csproj",
-        "packagesPath": "/home/danny/.nuget/packages/",
-        "outputPath": "/home/danny/RPi5DashboardInsights/server/obj/",
+        "projectPath": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\server.csproj",
+        "packagesPath": "C:\\Users\\Danny\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Danny\\Desktop\\Projects\\RPi5DashboardInsights\\server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/danny/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Danny\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -111,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

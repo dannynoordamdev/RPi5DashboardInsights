@@ -28,7 +28,7 @@ public class AppStatusController : ControllerBase{
     {   
         var latestStatuses = await _context.appStatuses
             .GroupBy(a => a.Name)
-            .Select(g => g.OrderByDescending(a => a.TimeStamp).FirstOrDefault())
+            .Select(g => g.OrderByDescending(a => a.TimeStamp).FirstOrDefault()) // sorts items based on timestamp new -> old
             .ToListAsync();
 
         return Ok(latestStatuses);

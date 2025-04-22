@@ -1,4 +1,3 @@
-
 // After making changes to the backend:
 // dotnet publish -c Release -o /home/danny/RPi5DashboardInsights/server/publish
 // sudo systemctl restart aspnetcoreapp

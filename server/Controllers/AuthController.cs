@@ -32,7 +32,7 @@ using Microsoft.AspNetCore.Mvc;
                 lockoutOnFailure: false);
 
             if (!result.Succeeded)
-                return Unauthorized(new { message = "Invalid username or password" });
+                return Unauthorized(new { message = "Invalid password" });
 
             return Ok(new { message = "Logged in!" });
         }
